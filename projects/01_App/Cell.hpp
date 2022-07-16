@@ -8,7 +8,7 @@ enum class CellDirection {
 	Right
 };
 
-class Cell : DrawableShapes
+class Cell : public DrawableShapes
 {
 public:
 	Cell();

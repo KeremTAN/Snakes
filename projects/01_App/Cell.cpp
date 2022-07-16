@@ -6,8 +6,8 @@ Cell::Cell()
 	m_shape.setFillColor(sf::Color::Red);
 	m_shape.setOutlineColor(sf::Color::Blue);
 	m_shape.setOutlineThickness(1);
-	setSize(20);
-	setVelocity(1);
+	setSize(30);
+	setVelocity(0.5);
 	setDirection(CellDirection::Right);
 }
 

@@ -9,12 +9,12 @@ Snake snake;
 
 Application::Application()
 {
+	grid.set(900, 30);
 }
 
 void Application::built(const int& width, const int& height)
 {
 	m_window.createWindow(width, height);
-	grid.set(width, 20);
 	m_window.addMouseMoveFunc(
 		std::bind(&Application::mouseMoved, this, std::placeholders::_1)
 	);
@@ -32,7 +32,7 @@ void Application::built(const int& width, const int& height)
 	);
 }
 
-void Application::start(const int& fps)
+void Application::start(int fps)
 {
 	float tmpFps = 1.0f / fps;
 	m_timeOfFrame = sf::seconds(tmpFps);
@@ -75,16 +75,16 @@ void Application::stageUpdate()
 
 void Application::keyPressed(sf::Keyboard::Key key)
 {
-	/*
 	if (key == sf::Keyboard::Left)
-		;
+		snake.setDirection(CellDirection::Left);
 	if (key == sf::Keyboard::Right)
-		;
+		snake.setDirection(CellDirection::Right);
 	if (key == sf::Keyboard::Up)
-		;
+		snake.setDirection(CellDirection::Up);
 	if (key == sf::Keyboard::Down)
-		;
-		*/
+		snake.setDirection(CellDirection::Down);
+	if (key == sf::Keyboard::Space)
+		snake.addQueue();
 }
 
 void Application::keyReleased(sf::Keyboard::Key key)

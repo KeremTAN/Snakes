@@ -11,6 +11,8 @@ public:
 	void draw(Window& window) override;
 
 private:
-	std::vector<Cell> m_cells;
+	std::vector<Cell>	m_cells;
+	float				m_distance;
+	CellDirection		m_newDirection;
 
 };

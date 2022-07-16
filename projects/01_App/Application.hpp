@@ -5,7 +5,7 @@ class Application {
 public:
 	Application();
 	void built(const int& width, const int& height);
-	void start(const int& fps = 60);
+	void start(int fps);
 private:
 	void createFrame();
 	void draw();
