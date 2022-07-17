@@ -1,5 +1,7 @@
 #pragma once
 #include"Window.hpp"
+#include "Grid.hpp"
+#include "Snake.hpp"
 
 class Application {
 public:
@@ -15,8 +17,10 @@ private:
 	void mouseMoved(sf::Event::MouseMoveEvent e);
 	void mouseClicked(sf::Event::MouseButtonEvent e);
 
-	Window m_window;
-	sf::Clock m_clock;
-	sf::Time m_timeOfFrame;
-	sf::Time m_passingTime;
+	Snake		m_snake;
+	Grid		m_grid;
+	Window		m_window;
+	sf::Clock	m_clock;
+	sf::Time	m_timeOfFrame;
+	sf::Time	m_passingTime;
 };

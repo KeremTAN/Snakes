@@ -4,6 +4,6 @@
 int main() {
 	Application app;
 	app.built(900, 900);
-	app.start(5);
+	app.start(60);
 
 }

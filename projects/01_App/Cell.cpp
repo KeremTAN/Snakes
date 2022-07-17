@@ -37,6 +37,11 @@ Cell Cell::createCell()
 	return newCell;
 }
 
+void Cell::setColor(const sf::Color& color)
+{
+	m_shape.setFillColor(color);
+}
+
 void Cell::draw(Window& win)
 {
 	m_shape.setPosition(m_position);

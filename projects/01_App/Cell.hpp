@@ -14,8 +14,9 @@ public:
 	Cell();
 
 	Cell			createCell();
+	void			setColor(const sf::Color& color);
 	void			draw(Window& win) override;
-	void			setPosition(const sf::Vector2f& newPosition);	// ?
+	void			setPosition(const sf::Vector2f& newPosition);
 	void			setDirection(const CellDirection& direction);
 	CellDirection	getDirection();
 	float			getSize();
