@@ -12,7 +12,7 @@ void Application::built(const int& width, const int& height)
 {
 	m_window.createWindow(width, height, "Snake Game");
 	//m_grid.set(900, 20);
-	m_snake.set(30, width, height);
+	m_snake.set(25, width, height);
 	m_window.addMouseMoveFunc(
 		std::bind(&Application::mouseMoved, this, std::placeholders::_1)
 	);

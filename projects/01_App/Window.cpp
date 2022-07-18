@@ -6,6 +6,7 @@ Window::Window()
 
 void Window::createWindow(const unsigned int& width, const unsigned int& height, const sf::String& title) {
 	window.create(sf::VideoMode(width, height), title);
+	window.setPosition({ 5,5 });
 }
 
 void Window::draw(sf::Drawable& shape)
