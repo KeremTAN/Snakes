@@ -17,9 +17,10 @@ private:
 	void mouseMoved(sf::Event::MouseMoveEvent e);
 	void mouseClicked(sf::Event::MouseButtonEvent e);
 
-	Snake		m_snake;
-	Grid		m_grid;
+
 	Window		m_window;
+	Snake		m_snake = Snake(&m_window);
+	//Grid		m_grid;
 	sf::Clock	m_clock;
 	sf::Time	m_timeOfFrame;
 	sf::Time	m_passingTime;

@@ -8,7 +8,7 @@ public:
 	Window();
 	void createWindow(const unsigned int& width,
 		const unsigned int& height,
-		const sf::String& title = "SFML");
+		const sf::String& title);
 	void draw(sf::Drawable& shape);
 	void processEvent();
 	bool isOpen();
@@ -18,6 +18,7 @@ public:
 	void addKeyReleaseFunc(KeyboardFunction newFunction);
 	void addMouseMoveFunc(MouseMove newFunction);
 	void addMouseClickedFunc(MouseClick newFunction);
+	void setTitle(const int& score);
 private:
 	KeyboardFunctionList m_keyPressFuncList;
 	KeyboardFunctionList m_keyReleaseFuncList;

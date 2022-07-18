@@ -65,3 +65,9 @@ void Window::addMouseClickedFunc(MouseClick newFunction)
 {
 	m_mouseClickFuncList.push_back(newFunction);
 }
+
+void Window::setTitle(const int& score)
+{
+	sf::String info = "Your Score : " + std::to_string(score);
+	window.setTitle(info);
+}

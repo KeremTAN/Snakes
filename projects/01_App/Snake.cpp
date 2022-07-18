@@ -1,9 +1,11 @@
 #include"Snake.hpp"
 
-Snake::Snake()
+Snake::Snake(Window* win)
 {
+	m_ptrWindow = win;
 	m_distance = 0.0f;
-	m_newDirection = CellDirection::Right;
+	m_score = 0;
+	m_Direction = CellDirection::Right;
 }
 
 void Snake::set(const float& cellSize,
@@ -18,6 +20,7 @@ void Snake::set(const float& cellSize,
 	addQueue();
 	addQueue();
 	addQueue();
+	m_cells[0].setColor(sf::Color::Magenta);
 }
 
 void Snake::addQueue()
@@ -33,6 +36,11 @@ void Snake::addQueue()
 
 void Snake::move()
 {
+	if (!isInWindow())
+		return;
+	if (isEatItself())
+		return;
+
 	for (auto& cell : m_cells)
 	{
 		cell.moveCell();
@@ -45,14 +53,22 @@ void Snake::move()
 		{
 			m_cells[i].setDirection(m_cells[i - 1].getDirection());
 		}
-		m_cells[0].setDirection(m_newDirection);
+		m_cells[0].setDirection(m_Direction);
 		m_distance = 0.0f;
 	}
 }
 
 void Snake::setDirection(CellDirection newDirection)
 {
-	m_newDirection = newDirection;
+	if (newDirection == CellDirection::Right && m_cells[0].getDirection() == CellDirection::Left)
+		return;
+	if (newDirection == CellDirection::Left && m_cells[0].getDirection() == CellDirection::Right)
+		return;
+	if (newDirection == CellDirection::Up && m_cells[0].getDirection() == CellDirection::Down)
+		return;
+	if (newDirection == CellDirection::Down && m_cells[0].getDirection() == CellDirection::Up)
+		return;
+	m_Direction = newDirection;
 }
 
 void Snake::draw(Window& window)
@@ -63,12 +79,33 @@ void Snake::draw(Window& window)
 
 }
 
+bool Snake::isInWindow()
+{
+	if (m_cells[0].getPosition().x < 0 ||
+		m_cells[0].getPosition().x + m_cellSize > m_windowWidth ||
+		m_cells[0].getPosition().y < 0 ||
+		m_cells[0].getPosition().y + m_cellSize > m_windowHeight)
+		return false;
+	
+	return true;
+}
+
+bool Snake::isEatItself()
+{
+	for (int i=2; i<m_cells.size(); i++)
+		if (m_cells[0].getPosition() == m_cells[i].getPosition())
+			return true;
+	return false;
+}
+
 void Snake::checkEating()
 {
 	if (m_cells[0].getPosition() == m_eating.getPosition())
 	{
 		addQueue();
 		freshEating();
+		m_score += 5;
+		m_ptrWindow->setTitle(m_score);
 		bool isCorrespond;
 		do
 		{
